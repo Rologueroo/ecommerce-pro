@@ -1,0 +1,194 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ecommerce Pro · Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ Variables de diseño (colores tomados de la consigna: rojo + grises) ============ */
+:root {
+  --brand: #d61f2c;
+  --brand-dark: #b01822;
+  --brand-soft: #fdecee;
+  --ink: #18181b;
+  --muted: #62626b;
+  --bg: #f5f5f6;
+  --surface: #ffffff;
+  --border: #e3e3e7;
+  --ok: #1d7a4b;
+  --warn: #a85a08;
+  --radius: 10px;
+  --font: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.5; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin: 0 0 1rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.25rem; margin: 0; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1rem 3rem; min-height: 70vh; }
+.muted { color: var(--muted); }
+.lead { max-width: 62ch; font-size: 1.1rem; color: var(--muted); }
+.footer { text-align: center; padding: 1.5rem 1rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--surface); }
+
+/* ============ Botones ============ */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; border: 1.5px solid transparent; border-radius: 8px; padding: .65rem 1.1rem; transition: background .15s, border-color .15s; }
+.btn-sm { padding: .4rem .75rem; font-size: .88rem; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--brand-dark); }
+.btn-secondary { background: var(--surface); color: var(--ink); border-color: var(--border); }
+.btn-secondary:hover:not(:disabled) { border-color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover:not(:disabled) { background: var(--bg); }
+.btn-danger { background: var(--surface); color: var(--brand-dark); border-color: var(--brand); }
+.btn-danger:hover:not(:disabled) { background: var(--brand-soft); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ============ Navbar ============ */
+.navbar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); }
+.navbar-inner { max-width: 1180px; margin: 0 auto; padding: .7rem 1rem; display: flex; align-items: center; gap: 1.5rem; }
+.brand { font-weight: 800; font-size: 1.3rem; color: var(--brand); text-decoration: none; letter-spacing: -0.02em; }
+.nav { display: flex; align-items: center; gap: 1.25rem; flex: 1; }
+.nav-link { text-decoration: none; font-weight: 500; color: var(--muted); padding: .3rem 0; border-bottom: 2px solid transparent; }
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--ink); border-bottom-color: var(--brand); }
+.nav-actions { margin-left: auto; display: flex; align-items: center; gap: .5rem; }
+.role { font-size: .82rem; font-weight: 600; padding: .25rem .6rem; border-radius: 999px; background: var(--bg); color: var(--muted); }
+.role-administrador { background: var(--brand-soft); color: var(--brand-dark); }
+.burger { display: none; margin-left: auto; font-size: 1.4rem; background: none; border: 0; cursor: pointer; padding: .2rem .5rem; }
+
+/* ============ Catálogo ============ */
+.filters { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; margin-bottom: .5rem; }
+input, textarea { font: inherit; }
+.filters input[type='search'] { flex: 1 1 260px; max-width: 360px; padding: .65rem .9rem; border: 1.5px solid var(--border); border-radius: 8px; background: var(--surface); }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip { font: inherit; font-weight: 500; padding: .4rem .9rem; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); cursor: pointer; }
+.chip-on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.count { color: var(--muted); margin: .5rem 0 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.1rem; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.card-media { position: relative; aspect-ratio: 4 / 3; background: var(--bg); }
+.card-media img { width: 100%; height: 100%; object-fit: cover; }
+.wish { position: absolute; top: .6rem; right: .6rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); font-size: 1.2rem; cursor: pointer; color: var(--ink); }
+.wish-on { color: var(--brand); }
+.card-body { padding: .9rem 1rem .4rem; flex: 1; }
+.card-title { font-size: 1.02rem; margin: .35rem 0 .3rem; line-height: 1.3; }
+.card-title a { text-decoration: none; }
+.card-title a:hover { text-decoration: underline; }
+.card-actions { display: flex; gap: .5rem; padding: .6rem 1rem 1rem; }
+.card-actions > * { flex: 1; }
+.tag { display: inline-block; font-size: .78rem; font-weight: 600; color: var(--muted); background: var(--bg); padding: .15rem .55rem; border-radius: 4px; }
+.price { font-weight: 800; font-size: 1.2rem; margin: 0; }
+.price-lg { font-size: 1.9rem; margin: .3rem 0; }
+.stock { margin: .2rem 0 0; font-size: .88rem; color: var(--ok); font-weight: 500; }
+.stock-out { color: var(--brand-dark); font-weight: 600; }
+.empty-block, .empty { text-align: center; color: var(--muted); padding: 2.5rem 1rem; }
+.empty-block .btn { margin-top: .5rem; }
+
+/* ============ Detalle ============ */
+.back { display: inline-block; margin-bottom: 1rem; color: var(--muted); text-decoration: none; font-weight: 500; }
+.back:hover { color: var(--ink); }
+.detail { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+.detail-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--bg); }
+.detail-desc { font-size: 1.05rem; max-width: 55ch; }
+.detail-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+
+/* ============ Formularios ============ */
+.auth { max-width: 420px; margin: 1rem auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+.form { display: grid; gap: .9rem; margin-bottom: 1rem; }
+.field { display: grid; gap: .3rem; font-weight: 600; font-size: .92rem; }
+.field input, .field textarea { padding: .6rem .8rem; border: 1.5px solid var(--border); border-radius: 8px; background: #fff; font-weight: 400; }
+.field input:disabled { background: var(--bg); color: var(--muted); }
+.field input[aria-invalid='true'], .field textarea[aria-invalid='true'] { border-color: var(--brand); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.error { color: var(--brand-dark); font-size: .85rem; font-weight: 500; margin: 0; }
+.form-actions { display: flex; justify-content: flex-end; gap: .6rem; margin-top: .4rem; }
+.demo-box { background: var(--bg); border-radius: 8px; padding: .75rem 1rem; font-size: .9rem; margin: 1rem 0 0; }
+
+/* ============ Admin ============ */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 1.5rem; }
+.stats > div { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .9rem 1.1rem; }
+.stats dt { color: var(--muted); font-size: .88rem; }
+.stats dd { margin: 0; font-size: 1.8rem; font-weight: 800; }
+.tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--border); margin-bottom: 1.25rem; }
+.tab { font: inherit; font-weight: 600; background: none; border: 0; padding: .6rem 1rem; cursor: pointer; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tab-on { color: var(--ink); border-bottom-color: var(--brand); }
+.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: 1rem; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+th, td { padding: .65rem .85rem; text-align: left; border-bottom: 1px solid var(--border); font-size: .92rem; vertical-align: middle; }
+th { background: var(--bg); font-weight: 700; font-size: .82rem; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.thumb { width: 52px; height: 40px; object-fit: cover; border-radius: 6px; }
+.row-actions { display: flex; gap: .4rem; }
+
+/* ============ Modal ============ */
+.modal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(24,24,27,.55); display: grid; place-items: center; padding: 1rem; }
+.modal { background: var(--surface); border-radius: 12px; width: min(480px, 100%); max-height: 90vh; display: flex; flex-direction: column; outline: none; }
+.modal-wide { width: min(620px, 100%); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.modal-body { padding: 1.25rem; overflow-y: auto; }
+.modal-footer { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .6rem; }
+.cart-total { margin-right: auto; font-size: 1.05rem; }
+.cart-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.cart-item { display: grid; grid-template-columns: 56px 1fr auto auto; gap: .75rem; align-items: center; }
+.cart-item img { width: 56px; height: 44px; object-fit: cover; border-radius: 6px; }
+.cart-info { display: grid; font-size: .92rem; }
+.cart-info span { color: var(--muted); }
+.qty { display: flex; align-items: center; gap: .4rem; }
+
+/* ============ Nosotros / 404 ============ */
+.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; margin-top: 1rem; }
+.member { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.member img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.member figcaption { display: grid; padding: .8rem 1rem; }
+.member span { color: var(--muted); font-size: .9rem; }
+.not-found { text-align: center; padding: 3rem 1rem; }
+.big-404 { font-size: clamp(5rem, 18vw, 9rem); font-weight: 800; color: var(--brand); line-height: 1; margin: 0; }
+
+/* ============ Responsive ============ */
+@media (max-width: 820px) {
+  .burger { display: block; }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: .5rem; background: var(--surface); padding: 1rem; border-bottom: 1px solid var(--border); }
+  .nav-open { display: flex; }
+  .nav-actions { margin-left: 0; flex-wrap: wrap; }
+  .detail { grid-template-columns: 1fr; padding: 1rem; }
+}
+@media (max-width: 520px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: .7rem; }
+  .card-actions { flex-direction: column; }
+  .field-row { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .cart-item { grid-template-columns: 48px 1fr auto; }
+  .cart-item > button:last-child { grid-column: 3; grid-row: 1; }
+  .qty { grid-column: 2 / 4; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---- Solo para presentar el mockup ---- */
+body{background:#dcdce0;padding:28px}
+.intro{max-width:1300px;margin:0 auto 24px}.intro h1{margin:0 0 4px}.intro p{margin:0;color:var(--muted);max-width:75ch}
+.palette{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.sw{display:flex;align-items:center;gap:8px;font-size:.82rem;background:#fff;border-radius:8px;padding:5px 10px 5px 5px}.sw i{width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.12)}
+.boardm{max-width:1300px;margin:0 auto;display:grid;gap:34px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+.cap{font-weight:700;margin:0 0 8px}.cap small{color:var(--muted);font-weight:500;margin-left:8px}
+.browser{background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);overflow:hidden;border:1px solid #c6c6cb}
+.bar-top{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#ececef;border-bottom:1px solid #d4d4d9}.bar-top i{width:11px;height:11px;border-radius:50%;background:#c3c3c9}
+.url{margin-left:10px;flex:1;background:#fff;border-radius:6px;padding:3px 10px;font-size:.8rem;color:var(--muted)}
+.viewport{background:var(--bg);position:relative}.viewport .navbar{position:static}.viewport .container{min-height:0}
+.searchfake{flex:1 1 260px;max-width:360px;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:#8b8b95}
+.mbk{background:rgba(24,24,27,.55);padding:34px 18px;display:grid;place-items:center}.mbk .modal{max-height:none}
+.phone-wrap{width:340px}.phone-wrap .browser{border-radius:34px;border:8px solid #1b1b1f;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.phone-wrap .grid{grid-template-columns:repeat(2,1fr);gap:.6rem}.phone-wrap .card-actions{flex-direction:column}.phone-wrap .card-title{font-size:.9rem}.phone-wrap .container{padding:1rem .8rem}
+.pair2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;align-items:start}.card-media{background:#e4e4e8}@media(max-width:1000px){.pair2{grid-template-columns:1fr}}
+@media(max-width:1000px){.pair{grid-template-columns:1fr}}
+</style></head><body>
+<div class="intro"><h1>Ecommerce Pro · Mockup</h1><p>Alta fidelidad: colores, tipografía y contenido de ejemplo. Los colores salen del propio documento de la consigna (rojo sobre grises) y la tipografía es Archivo, la misma de ese documento. Las imágenes de productos son de ejemplo.</p>
+<div class="palette"><span class="sw"><i style="background:#d61f2c"></i>Rojo marca #d61f2c</span><span class="sw"><i style="background:#b01822"></i>Rojo hover #b01822</span><span class="sw"><i style="background:#18181b"></i>Tinta #18181b</span><span class="sw"><i style="background:#62626b"></i>Gris texto #62626b</span><span class="sw"><i style="background:#f5f5f6"></i>Fondo #f5f5f6</span><span class="sw"><i style="background:#1d7a4b"></i>Stock #1d7a4b</span></div></div>
+<div class="boardm">
+<section><p class="cap">Catálogo <small>/ · visitante</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/</span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><nav class="nav"><span class="nav-link active">Catálogo</span><span class="nav-link ">Nosotros</span><div class="nav-actions"><span class="role ">Invitado</span><span class="btn btn-secondary btn-sm">Carrito (0)</span><span class="btn btn-ghost btn-sm">Ingresar</span><span class="btn btn-primary btn-sm">Registrarme</span></div></nav></div></header><main class="container"><h1>Catálogo</h1><div class="filters"><div class="searchfake">Buscar por nombre o categoría</div><div class="chips"><span class="chip chip-on">Todas</span><span class="chip">Deportes</span><span class="chip">Hogar</span><span class="chip">Tecnología</span></div></div><p class="count">8 productos</p><div class="grid"><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-auriculares/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Auriculares Bluetooth Pulse</h3><p class="price">$ 48.900</p><p class="stock ">15 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-teclado/600/450" alt=""><span class="wish wish-on">♥</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Teclado mecánico Forge</h3><p class="price">$ 72.500</p><p class="stock ">8 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-reloj/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Smartwatch Orbit</h3><p class="price">$ 129.900</p><p class="stock ">5 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-lampara/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Hogar</span><h3 class="card-title">Lámpara de escritorio LED</h3><p class="price">$ 21.500</p><p class="stock ">12 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-zapatillas/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Deportes</span><h3 class="card-title">Zapatillas Runner Air</h3><p class="price">$ 96.500</p><p class="stock ">10 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-mochila/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Deportes</span><h3 class="card-title">Mochila Trek 30L</h3><p class="price">$ 52.900</p><p class="stock ">14 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-yoga/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Deportes</span><h3 class="card-title">Mat de yoga Flow</h3><p class="price">$ 14.900</p><p class="stock stock-out">Sin stock</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm" disabled style="opacity:.45">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-manta/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Hogar</span><h3 class="card-title">Manta polar doble</h3><p class="price">$ 18.900</p><p class="stock ">25 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article></div></main></div></div></section>
+<section class="pair"><div><p class="cap">Detalle de producto <small>/product/P-0002 · usuario logueado</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/product/P-0002</span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><nav class="nav"><span class="nav-link active">Catálogo</span><span class="nav-link ">Nosotros</span><span class="nav-link ">Mis deseos</span><div class="nav-actions"><span class="role ">Ana · Usuario</span><span class="btn btn-secondary btn-sm">Carrito (1)</span><span class="btn btn-ghost btn-sm">Salir</span></div></nav></div></header><main class="container"><span class="back">← Volver al catálogo</span><article class="detail"><img class="detail-img" src="https://picsum.photos/seed/ecp-teclado/600/450" alt=""><div class="detail-info"><span class="tag">Tecnología</span><h1>Teclado mecánico Forge</h1><p class="price price-lg">$ 72.500</p><p class="stock">Stock: 8 unidades</p><p class="detail-desc">Teclado mecánico con switches rojos, retroiluminación y cable desmontable.</p><p class="muted">Código: P-0002</p><div class="detail-actions"><span class="btn btn-primary">Agregar al carrito</span><span class="btn btn-secondary">♥ En mis deseos</span></div></div></article></main></div></div></div><div class="phone-wrap"><p class="cap">Celular <small>390 px</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url"></span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><span class="burger" style="display:block">☰</span></div></header><main class="container" style="padding-top:1rem"><h1 style="font-size:1.5rem">Catálogo</h1><div class="filters"><div class="searchfake" style="flex:1 1 100%">Buscar por nombre o categoría</div><div class="chips"><span class="chip chip-on">Todas</span><span class="chip">Deportes</span><span class="chip">Hogar</span></div></div><p class="count">8 productos</p><div class="grid"><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-auriculares/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Auriculares Bluetooth Pulse</h3><p class="price">$ 48.900</p><p class="stock ">15 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-teclado/600/450" alt=""><span class="wish wish-on">♥</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Teclado mecánico Forge</h3><p class="price">$ 72.500</p><p class="stock ">8 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-reloj/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Tecnología</span><h3 class="card-title">Smartwatch Orbit</h3><p class="price">$ 129.900</p><p class="stock ">5 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article><article class="card"><div class="card-media"><img src="https://picsum.photos/seed/ecp-lampara/600/450" alt=""><span class="wish ">♡</span></div><div class="card-body"><span class="tag">Hogar</span><h3 class="card-title">Lámpara de escritorio LED</h3><p class="price">$ 21.500</p><p class="stock ">12 disponibles</p></div><div class="card-actions"><span class="btn btn-secondary btn-sm">Ver detalle</span><span class="btn btn-primary btn-sm"  style="">Agregar</span></div></article></div></main></div></div></div></section>
+<section><p class="cap">Panel de administración <small>/admin · administrador</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/admin</span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><nav class="nav"><span class="nav-link ">Catálogo</span><span class="nav-link ">Nosotros</span><span class="nav-link ">Mis deseos</span><span class="nav-link active">Administración</span><div class="nav-actions"><span class="role role-administrador">Administrador</span><span class="btn btn-secondary btn-sm">Carrito (0)</span><span class="btn btn-ghost btn-sm">Salir</span></div></nav></div></header><main class="container"><h1>Panel de administración</h1><dl class="stats"><div><dt>Productos</dt><dd>12</dd></div><div><dt>Sin stock</dt><dd>1</dd></div><div><dt>Usuarios</dt><dd>3</dd></div></dl><div class="tabs"><span class="tab tab-on">Productos</span><span class="tab">Usuarios</span></div><div class="section-head"><h2>Productos (12)</h2><span class="btn btn-primary">Nuevo producto</span></div><div class="table-wrap"><table><thead><tr><th>Imagen</th><th>Código</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr></thead><tbody><tr><td><img class="thumb" src="https://picsum.photos/seed/ecp-auriculares/600/450" alt=""></td><td>P-0001</td><td>Auriculares Bluetooth Pulse</td><td>Tecnología</td><td>$ 48.900</td><td class="">15</td><td class="row-actions"><span class="btn btn-secondary btn-sm">Editar</span><span class="btn btn-danger btn-sm">Borrar</span></td></tr><tr><td><img class="thumb" src="https://picsum.photos/seed/ecp-teclado/600/450" alt=""></td><td>P-0002</td><td>Teclado mecánico Forge</td><td>Tecnología</td><td>$ 72.500</td><td class="">8</td><td class="row-actions"><span class="btn btn-secondary btn-sm">Editar</span><span class="btn btn-danger btn-sm">Borrar</span></td></tr><tr><td><img class="thumb" src="https://picsum.photos/seed/ecp-reloj/600/450" alt=""></td><td>P-0003</td><td>Smartwatch Orbit</td><td>Tecnología</td><td>$ 129.900</td><td class="">5</td><td class="row-actions"><span class="btn btn-secondary btn-sm">Editar</span><span class="btn btn-danger btn-sm">Borrar</span></td></tr><tr><td><img class="thumb" src="https://picsum.photos/seed/ecp-yoga/600/450" alt=""></td><td>P-0012</td><td>Mat de yoga Flow</td><td>Deportes</td><td>$ 14.900</td><td class="stock-out">0</td><td class="row-actions"><span class="btn btn-secondary btn-sm">Editar</span><span class="btn btn-danger btn-sm">Borrar</span></td></tr></tbody></table></div></main></div></div></section>
+<section class="pair2"><div><p class="cap">Formulario con error de validación <small>modal</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/admin</span></div><div class="viewport"><div class="mbk"><div class="modal modal-wide"><header class="modal-header"><h2>Nuevo producto</h2><span class="btn btn-ghost btn-sm">✕</span></header><div class="modal-body"><div class="form"><label class="field">Código<input disabled value="Se genera automáticamente"></label><label class="field">Nombre<input value="Mochila urbana"></label><div class="field-row"><label class="field">Precio (ARS)<input value="45000"></label><label class="field">Stock<input aria-invalid="true" value="-2"><span class="error">El stock debe ser un número entero, 0 o mayor.</span></label></div><label class="field">Categoría<input value="Deportes"></label><label class="field">URL de la imagen<input value="https://..."></label><label class="field">Descripción<textarea rows="2">Mochila de uso diario con compartimento para notebook.</textarea></label><div class="form-actions"><span class="btn btn-secondary">Cancelar</span><span class="btn btn-primary">Agregar producto</span></div></div></div></div></div></div></div></div><div><p class="cap">Carrito <small>modal</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/</span></div><div class="viewport"><div class="mbk"><div class="modal"><header class="modal-header"><h2>Tu carrito</h2><span class="btn btn-ghost btn-sm">✕</span></header><div class="modal-body"><ul class="cart-list"><li class="cart-item"><img src="https://picsum.photos/seed/ecp-teclado/600/450" alt=""><div class="cart-info"><strong>Teclado mecánico Forge</strong><span>$ 72.500</span></div><div class="qty"><span class="btn btn-secondary btn-sm">−</span><span>1</span><span class="btn btn-secondary btn-sm">+</span></div><span class="btn btn-ghost btn-sm">✕</span></li><li class="cart-item"><img src="https://picsum.photos/seed/ecp-lampara/600/450" alt=""><div class="cart-info"><strong>Lámpara de escritorio LED</strong><span>$ 21.500</span></div><div class="qty"><span class="btn btn-secondary btn-sm">−</span><span>2</span><span class="btn btn-secondary btn-sm">+</span></div><span class="btn btn-ghost btn-sm">✕</span></li></ul></div><footer class="modal-footer"><strong class="cart-total">Total: $ 115.500</strong><span class="btn btn-secondary">Vaciar</span><span class="btn btn-primary">Finalizar compra</span></footer></div></div></div></div></div></section>
+<section class="pair2"><div><p class="cap">Login <small>/login</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/login</span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><nav class="nav"><span class="nav-link active">Catálogo</span><span class="nav-link ">Nosotros</span><div class="nav-actions"><span class="role ">Invitado</span><span class="btn btn-secondary btn-sm">Carrito (0)</span><span class="btn btn-ghost btn-sm">Ingresar</span><span class="btn btn-primary btn-sm">Registrarme</span></div></nav></div></header><main class="container"><section class="auth"><h1>Ingresar</h1><div class="form"><label class="field">Email<input value="ana@test.com"></label><label class="field">Contraseña<input type="password" value="clave123"></label><p class="error">Email o contraseña incorrectos.</p><span class="btn btn-primary">Ingresar</span></div><p class="muted">¿No tenés cuenta? <u>Registrate</u></p><p class="demo-box"><strong>Cuenta de administrador para la demo:</strong><br>admin@ecommerce.com · Admin123</p></section></main></div></div></div><div><p class="cap">Error 404 <small>/404</small></p><div class="browser "><div class="bar-top"><i></i><i></i><i></i><span class="url">ecommercepro.app/404</span></div><div class="viewport"><header class="navbar"><div class="navbar-inner"><span class="brand">Ecommerce Pro</span><nav class="nav"><span class="nav-link active">Catálogo</span><span class="nav-link ">Nosotros</span><div class="nav-actions"><span class="role ">Invitado</span><span class="btn btn-secondary btn-sm">Carrito (0)</span><span class="btn btn-ghost btn-sm">Ingresar</span><span class="btn btn-primary btn-sm">Registrarme</span></div></nav></div></header><main class="container"><div class="not-found"><p class="big-404">404</p><h1>No encontramos esa página</h1><p class="muted">El enlace puede estar roto o no tenés permiso para verla.</p><span class="btn btn-primary">Volver al catálogo</span></div></main></div></div></div></section>
+</div></body></html>
