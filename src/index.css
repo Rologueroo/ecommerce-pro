@@ -25,7 +25,14 @@ h2 { font-size: 1.25rem; margin: 0; }
 .container { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1rem 3rem; min-height: 70vh; }
 .muted { color: var(--muted); }
 .lead { max-width: 62ch; font-size: 1.1rem; color: var(--muted); }
-.footer { text-align: center; padding: 1.5rem 1rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--surface); }
+.footer { padding: 2rem 1rem 1.25rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--surface); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; }
+.footer-inner p { margin: .35rem 0 0; }
+.footer-brand { color: var(--ink); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-start; }
+.footer-links a { color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--brand); }
+.footer-copy { max-width: 1200px; margin: 1.5rem auto 0; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .82rem; text-align: center; }
 
 /* ============ Botones ============ */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; border: 1.5px solid transparent; border-radius: 8px; padding: .65rem 1.1rem; transition: background .15s, border-color .15s; }
@@ -137,10 +144,11 @@ tr:last-child td { border-bottom: 0; }
 /* ============ Nosotros / 404 ============ */
 .team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; margin-top: 1rem; }
 .member { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.member img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.member img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center top; }
 .member figcaption { display: grid; padding: .8rem 1rem; }
 .member span { color: var(--muted); font-size: .9rem; }
 .not-found { text-align: center; padding: 3rem 1rem; }
+.not-found-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
 .big-404 { font-size: clamp(5rem, 18vw, 9rem); font-weight: 800; color: var(--brand); line-height: 1; margin: 0; }
 
 /* ============ Responsive ============ */

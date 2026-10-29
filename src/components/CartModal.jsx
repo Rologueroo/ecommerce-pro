@@ -13,10 +13,10 @@ export default function CartModal({ onClose }) {
   const navigate = useNavigate();
 
   function handleCheckout() {
-    // Comprar requiere una cuenta.
+    // Comprar requiere una cuenta: el invitado ve la página de error con opciones para ingresar.
     if (!isLoggedIn) {
       onClose();
-      return navigate('/login', { state: { from: '/' } });
+      return navigate('/404', { state: { reason: 'guest-checkout' } });
     }
     checkout();
     setPurchased(true);

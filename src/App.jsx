@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import Catalog from './pages/Catalog';
 import ProductDetail from './pages/ProductDetail';
@@ -31,7 +32,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </main>
-      <footer className="footer">Ecommerce Pro · Proyecto integrador (React + LocalStorage)</footer>
+      <Footer />
     </>
   );
 }
