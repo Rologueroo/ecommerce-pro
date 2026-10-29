@@ -4,6 +4,7 @@
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function isValidUrl(value) {
+  if (/^\/products\/[A-Za-z0-9_-]+\.jpg$/.test(value)) return true;
   try {
     const url = new URL(value);
     return url.protocol === 'http:' || url.protocol === 'https:';
@@ -50,8 +51,8 @@ export function validateProduct({ name, price, stock, category, image, descripti
 
   if (!category.trim()) errors.category = 'La categoría es obligatoria.';
 
-  if (!image.trim()) errors.image = 'La URL de la imagen es obligatoria.';
-  else if (!isValidUrl(image.trim())) errors.image = 'Ingresá una URL válida que empiece con http:// o https://';
+  if (!image.trim()) errors.image = 'La imagen es obligatoria.';
+  else if (!isValidUrl(image.trim())) errors.image = 'Ingresá una URL http(s) o una ruta como /products/foto.jpg.';
 
   if (!description.trim()) errors.description = 'La descripción es obligatoria.';
   else if (description.trim().length < 10) errors.description = 'La descripción debe tener al menos 10 caracteres.';
