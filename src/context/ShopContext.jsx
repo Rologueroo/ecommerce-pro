@@ -1,13 +1,18 @@
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useEffect, useMemo } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { seedProducts } from '../data/seedProducts';
 import { generateId } from '../utils/format';
+import { migrateSeedProductImages } from '../utils/productImages';
 
 const ShopContext = createContext(null);
 
 export function ShopProvider({ children }) {
   // Inventario y carrito, ambos guardados automáticamente en LocalStorage.
   const [products, setProducts] = useLocalStorage('ecp_products', seedProducts);
+  useEffect(() => {
+    setProducts((current) => migrateSeedProductImages(current, seedProducts));
+  }, [setProducts]);
+
   // El carrito guarda solo ids y cantidades: [{ id: 'P-0001', qty: 2 }]
   const [cart, setCart] = useLocalStorage('ecp_cart', []);
 

@@ -80,8 +80,8 @@ export default function ProductForm({ product = null, onSaved, onCancel }) {
       </label>
 
       <label className="field">
-        URL de la imagen
-        <input name="image" type="url" placeholder="https://..." value={form.image} onChange={handleChange} aria-invalid={Boolean(errors.image)} />
+        URL o ruta de la imagen
+        <input name="image" type="text" placeholder="https://... o /products/foto.jpg" value={form.image} onChange={handleChange} aria-invalid={Boolean(errors.image)} />
         {fieldError('image')}
       </label>
 
